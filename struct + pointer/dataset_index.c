@@ -58,5 +58,5 @@ struct PERSON* search(struct PERSON dataset_local[], struct INDEX index_local[],
             return &dataset_local[index_local[i].index];  // return pointer type, location of the dataset
         }
     }
-    return NULL;  // NULL 반환
+    return NULL;  // return NULL
 }
