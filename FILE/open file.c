@@ -77,7 +77,5 @@ void age_group(struct PERSONAL personal[], char outFileName[], int line, int sta
         }
     }
 
-    printf("Hello world");
-
     fclose(writeFile);
 }
