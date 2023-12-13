@@ -421,6 +421,9 @@ ParticipantNode *insertKangInOrder(ParticipantNode *head, char kangData[], int a
 // Wrapper function for inserting a new node and updating the linked list
 ParticipantNode *projectFive(ParticipantNode *head, char kangData[], int ageFieldIndex) {
     head = insertKangInOrder(head, kangData, ageFieldIndex);
+    
+    // printLinkedList(head);
+    
     return head;
 }
 
@@ -430,3 +433,4 @@ void freeAllDynamicMemory(ParticipantData *participants, ParticipantNode *head, 
     freeLinkedList(head);
     free(data);
 }
+
