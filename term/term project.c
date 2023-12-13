@@ -237,11 +237,8 @@ ParticipantNode *allocateParticipantNodes(int numberOfLines) {
         newNode->next = NULL;
 
         // Link the new node to the list.
-        if (prev != NULL) {
-            prev->next = newNode;
-        } else {
-            head = newNode;
-        }
+        if (prev != NULL) prev->next = newNode;
+        else head = newNode;
         prev = newNode;
     }
 
@@ -308,9 +305,8 @@ void extractYesFeeParticipants(ParticipantNode *head, Data *data, int feeFiledIn
     while (current != NULL) {
         tempFee = extractCharIndex((*current).line, feeFiledIndex);
 
-        if (!strcmp("yes", tempFee)) {
-            readParticipantData(data, (*current).line);
-        }
+        if (!strcmp("yes", tempFee)) readParticipantData(data, (*current).line);
+        
         current = (*current).next;
     }
 }
@@ -329,9 +325,8 @@ char *extractCharIndex(char *line, int index) {
     }
 
     char *result = NULL;
-    if (token != NULL) {
-        result = strdup(token);
-    }
+    if (token != NULL) result = strdup(token);
+
     free(lineCopy);
 
     return result;
@@ -408,11 +403,8 @@ ParticipantNode *insertKangInOrder(ParticipantNode *head, char kangData[], int a
     }
 
     // Insert the node in the correct position
-    if (prev != NULL) {
-        prev->next = kangNode;
-    } else {
-        head = kangNode;
-    }
+    if (prev != NULL) prev->next = kangNode;
+    else head = kangNode;
     kangNode->next = current;
 
     return head;
