@@ -63,7 +63,7 @@ void freeAllDynamicMemory(ParticipantData *, ParticipantNode *, Data *);
 int main() {
     // File names for input and output
     char inputFileName[] = "registration_data.txt";
-    char outputFileName[] = "sorted_data.txt";
+    char outputFileName[] = "p1.txt";
 
     // Field indices for age, fee, and occupation
     int ageFieldIndex = 5, feeFiledIndex = 3, occupationFiledIndex = 7;
@@ -218,7 +218,7 @@ ParticipantNode *projectTwo(char inputFileName[], ParticipantData *participants)
     // Assign data from the array to the linked list nodes.
     assignDataToNodes(participants, head, numberOfLines);
 
-    // printLinkedList(head);
+    printLinkedList(head);
 
     return head;
 }
@@ -263,6 +263,7 @@ void printLinkedList(ParticipantNode *head) {
         printf("%s", (*current).line);
         current = (*current).next;
     }
+    printf("\n");
 }
 
 // Frees memory allocated for the linked list.
@@ -305,10 +306,15 @@ void extractYesFeeParticipants(ParticipantNode *head, Data *data, int feeFiledIn
     while (current != NULL) {
         tempFee = extractCharIndex((*current).line, feeFiledIndex);
 
-        if (!strcmp("yes", tempFee)) readParticipantData(data, (*current).line);
+        if (!strcmp("yes", tempFee)) {
+            readParticipantData(data, (*current).line);
+            printParticipantData(data);
+        }
         
         current = (*current).next;
     }
+
+    printf("\n");
 }
 
 // Extracts a character array from a string at a given index.
@@ -367,7 +373,7 @@ void extractStaffIndex(ParticipantNode *head, int occupationFiledIndex) {
     }
 
     // Print the updated linked list
-    // printLinkedList(head);
+    printLinkedList(head);
 }
 
 // Function to delete a 'staff' node from the linked list
@@ -414,7 +420,7 @@ ParticipantNode *insertKangInOrder(ParticipantNode *head, char kangData[], int a
 ParticipantNode *projectFive(ParticipantNode *head, char kangData[], int ageFieldIndex) {
     head = insertKangInOrder(head, kangData, ageFieldIndex);
     
-    // printLinkedList(head);
+    printLinkedList(head);
     
     return head;
 }
@@ -425,4 +431,3 @@ void freeAllDynamicMemory(ParticipantData *participants, ParticipantNode *head, 
     freeLinkedList(head);
     free(data);
 }
-
